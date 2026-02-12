@@ -142,7 +142,7 @@ io.on("connection", socket => {
 // HEALTH CHECK
 // ===============================
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/dashboard.html");
+  res.sendFile(__dirname + "views/dashboard.html");
 });
 
 
