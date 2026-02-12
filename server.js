@@ -27,13 +27,13 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "justusalways333@gmail.com",
+    user: "agriculturalfoundationiv@gmail.com",
     pass: "sjbp ltph bttj hplg"
   }
 });
 
 function sendEmail(to, subject, text) {
-  return transporter.sendMail({ from: "yourgmail@gmail.com", to, subject, text });
+  return transporter.sendMail({ from: "agriculturalfoundationiv@gmail.com", to, subject, text });
 }
 
 // ===============================
@@ -76,6 +76,7 @@ app.use("/withdraw", withdrawRoutes);
 app.use("/loan", loanRoutes);
 app.use("/transactions", transactionRoutes);
 app.use("/otp", otpRoutes);
+app.use(express.static(__dirname));
 
 // ===============================
 // LOGOUT
@@ -141,8 +142,9 @@ io.on("connection", socket => {
 // HEALTH CHECK
 // ===============================
 app.get("/", (req, res) => {
-  res.send("Cotton Investment Platform running");
+  res.sendFile(__dirname + "/dashboard.html");
 });
+
 
 // ===============================
 // START SERVER
