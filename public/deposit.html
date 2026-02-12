@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deposit | Cotton Investment</title>
+</head>
+<body>
+  <h2>Make a Deposit</h2>
+
+  <form method="POST" action="/deposit">
+    <label>Amount:</label><br>
+    <input name="amount" type="number" required><br><br>
+
+    <label>Method:</label><br>
+    <select name="method" required>
+      <option value="btc">BTC</option>
+      <option value="paypal">PayPal / CashApp</option>
+    </select><br><br>
+
+    <button type="submit">Submit Deposit</button>
+  </form>
+</body>
+</html>

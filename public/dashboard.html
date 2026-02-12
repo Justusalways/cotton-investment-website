@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Cotton Investment</title>
+</head>
+<body>
+  <h1>User Dashboard</h1>
+
+ <ul>
+  <li>User ID: <span id="user_id"></span></li>
+  <li>Account Balance: $<span id="balance"></span></li>
+  <li>Profit Balance: $<span id="profit"></span></li>
+  <li>KYC Status: <span id="kyc"></span> <span id="kycCountdown"></span></li>
+</ul>
+
+<h3>Pending Deposit</h3>
+<p>Time remaining: <span id="depositCountdown"></span></p>
+
+<h3>Pending Withdraw</h3>
+<p>Time remaining: <span id="withdrawCountdown"></span></p>
+
+<script src="/js/dashboard.js"></script>
+<script>
+  // Start countdowns if there is a pending action
+  startCountdown("depositCountdown", 15 * 60);  // 15 minutes
+  startCountdown("withdrawCountdown", 15 * 60); // 15 minutes
+  startCountdown("kycCountdown", 15 * 60);      // 15 minutes
+</script>
+
+
+  <nav>
+    <a href="/deposit.html">Deposit</a> |
+    <a href="/invest.html">Invest</a> |
+    <a href="/withdraw.html">Withdraw</a> |
+    <a href="/loan.html">Loan</a> |
+    <a href="/transactions.html">Transactions</a> |
+    <a href="/otp.html">Verify OTP</a> |
+    <form id="logoutForm" method="POST" action="/logout" style="display:inline;">
+      <button type="submit">Logout</button>
+    </form>
+  </nav>
+
+  <script>
+    // Populate dashboard from API
+    fetch('/dashboard')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('user_id').innerText = data.user_id;
+        document.getElementById('balance').innerText = data.balance;
+        document.getElementById('profit').innerText = data.profit;
+        document.getElementById('kyc').innerText = data.kyc;
+      });
+  </script>
+</body>
+</html>

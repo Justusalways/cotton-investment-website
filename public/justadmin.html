@@ -1,0 +1,11 @@
+<h2>Admin Panel</h2>
+<button onclick="loadUsers()">Load Users</button>
+<pre id="out"></pre>
+
+<script>
+function loadUsers() {
+  fetch("/admin/users")
+    .then(r => r.json())
+    .then(d => out.innerText = JSON.stringify(d,null,2));
+}
+</script>

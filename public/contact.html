@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+</head>
+<body>
+  <h2>Contact Customer Service</h2>
+  <form id="contactForm">
+    <input type="email" name="email" placeholder="Your Email" required><br><br>
+    <textarea name="message" placeholder="Your Message" required></textarea><br><br>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const status = document.getElementById("status");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = {
+        email: formData.get("email"),
+        message: formData.get("message")
+      };
+
+      const res = await fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      status.innerText = await res.text();
+      form.reset();
+    });
+  </script>
+</body>
+</html>

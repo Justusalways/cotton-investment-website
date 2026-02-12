@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Withdraw | Cotton Investment</title>
+</head>
+<body>
+  <h2>Withdraw Funds</h2>
+
+  <form method="POST" action="/withdraw">
+    <label>Amount:</label><br>
+    <input type="number" name="amount" required><br><br>
+
+    <label>Method:</label><br>
+    <select name="method" required>
+      <option value="bank">Bank Transfer</option>
+      <option value="btc">BTC / USDT</option>
+    </select><br><br>
+
+    <button type="submit">Request Withdraw</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transactions | Cotton Investment</title>
+</head>
+<body>
+  <h2>Transactions</h2>
+  <ul id="transactionsList">
+    <!-- Transactions populated via fetch -->
+  </ul>
+
+  <script>
+    fetch('/transactions')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('transactionsList');
+        data.forEach(t => {
+          const li = document.createElement('li');
+          li.textContent = `${t.type || 'Deposit/Invest'} - $${t.amount} - ${t.status}`;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invest | Cotton Investment</title>
+</head>
+<body>
+  <h2>Investment Plans</h2>
+
+  <form method="POST" action="/invest">
+    <label>Plan:</label><br>
+    <select name="plan" required>
+      <option value="starter">Starter: $5k-$10k → 75% ROI / 10 days</option>
+      <option value="growth">Growth: $10,100-$20,000 → 110% ROI / 15 days</option>
+      <option value="wealth">Wealth: $20,100-$50,000 → 150% ROI / 30 days</option>
+      <option value="elite">Elite Premium: $50,000-$1M → 250% ROI</option>
+    </select><br><br>
+
+    <label>Amount:</label><br>
+    <input type="number" name="amount" required><br><br>
+
+    <button type="submit">Invest</button>
+  </form>
+</body>
+</html>
