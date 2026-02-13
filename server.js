@@ -14,6 +14,13 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
+app.use(express.static(path.join(__dirname, "public")));
+
+
+// VIEW ENGINE SETUP
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 // ===============================
 // DATABASE
 // ===============================
@@ -76,7 +83,6 @@ app.use("/withdraw", withdrawRoutes);
 app.use("/loan", loanRoutes);
 app.use("/transactions", transactionRoutes);
 app.use("/otp", otpRoutes);
-app.use(express.static(__dirname));
 
 // ===============================
 // LOGOUT
@@ -141,8 +147,8 @@ io.on("connection", socket => {
 // ===============================
 // HEALTH CHECK
 // ===============================
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/dashboard.html");
+app.get("/dashboard", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
 
 
