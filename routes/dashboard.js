@@ -2,9 +2,12 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db/database");
 
+// DASHBOARD
 router.get("/", (req, res) => {
+
+  // 🚫 if not logged in → go login
   if (!req.session.user) {
-    return res.redirect("/login");
+    return res.redirect("/auth/login");
   }
 
   db.get(
