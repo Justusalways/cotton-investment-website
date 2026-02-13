@@ -148,10 +148,11 @@ io.on("connection", socket => {
 // HEALTH CHECK
 // ===============================
 
-// HOMEPAGE
+// HOMEPAGE → welcome page
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "dashboard.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
 
 // DASHBOARD
 app.get("/dashboard", (req, res) => {
